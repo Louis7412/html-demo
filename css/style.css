@@ -1,0 +1,32 @@
+/* 共用css區 */
+
+
+body {
+    text-align: center;
+    background-color: antiquewhite;
+    font-family: "標楷體", 'Arial Narrow Bold', sans-serif;
+}
+
+.title {
+    color: blueviolet;
+    font-family: 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(236, 230, 230);
+    /* 1rem=>16px */
+    font-size: 2rem;
+    display: inline-block;
+    width: 600px;
+    margin: 10px 20px;
+    padding: 6px;
+    /* border 框線  */
+    border: 1px solid rgb(136, 112, 155);
+    /* border radius邊框園矩形 */
+    border-radius: 10px;
+}
+
+.main-title {
+    background-color: cadetblue;
+    font-size: 2.5rem;
+    color: white;
+    border: ;
+
+}
