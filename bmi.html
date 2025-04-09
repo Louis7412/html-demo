@@ -70,6 +70,7 @@
                 width: 80%;
             }
     </style>
+
 </head>
 
 <body>
@@ -103,6 +104,53 @@
         <button type="submit">計算</button>
     </form>
     <a href="index.html">首頁</a>
+
+    <script>
+        let x = 10;
+        let y = 20;
+        let z = x + y;
+
+        if (x > 10) {
+
+        } else if (y > 20) {
+
+        } else {
+            console.log(x, y)
+        }
+
+        let height = prompt("請輸入身高:");
+        let weight = prompt("請輸入體重:");
+        let bmi = getBMI(height, weight);
+
+        alert("BMI:" + bmi);
+
+
+        /* 函式宣告  == python 的def*/
+        function getBMI(height, weight) {
+            const bmi = weight / (height / 100) ** 2;
+            console.log(bmi.toFixed(2));
+
+            return bmi.toFixed(2);
+        }
+
+        /* console.log(x, y, z); */
+        /* const 宣告常數*/
+        /* const pi = 3.1415926;
+        /* prompt輸入
+        let radius = prompt("請輸入半徑:");
+        /* isNaN判斷是否數值*/
+        /* if (isNaN(radius)) { */
+        /* alert("請輸入正確數值!"); */
+        /* } else { */
+
+        /* let area = radius * radius * pi; */
+        /* const result = "半徑為:" + radius + "面積為:" + area; */
+        /* 三種輸出 */
+        /* console.log(result); */
+        /* document.write("<h2>" + result + "<h2>"); */
+        /* alert(result); */
+        /* } */
+    </script>
 </body>
 
 </html>
