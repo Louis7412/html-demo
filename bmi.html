@@ -158,6 +158,7 @@
         const countyEl = document.querySelector("#county");
         const deleteRecordBtnE1 = document.querySelector("#deleteRecordBtn");
 
+
         deleteRecordBtnE1.addEventListener("click", function () {
             localStorage.removeItem("record");
             /* 刷新頁面 */
@@ -174,8 +175,11 @@
             count: 0
         }
 
-        recode = JSON.parse(localStorage.getItem("record"));
-        if (recoder) {
+        /* 陣列 */
+        let datas = [];
+
+        record = JSON.parse(localStorage.getItem("record"));
+        if (record) {
             data = record;
             /* 加入顯示紀錄動作 */
             let avg = (data.total / data.count).toFixed(1);
@@ -188,8 +192,14 @@
 
 
         function calc() {
+            /* 取得最新的選取 */
+            const sexEl = document.querySelector("input[name='sex']:checked");
             let height = heightEl.value;
             let weight = weightEl.value;
+            let name = nameEl.value;
+            let age = ageEl.value;
+            let sex = sexEl.value;
+            let county = countyEl.value;
 
             if (height <= 0 || weight <= 0) {
                 alert("請輸入正確數值!");
@@ -198,7 +208,6 @@
 
             document.querySelector("#result").hidden = false;
 
-            const sexEl = document.querySelector("input[name='sex']:checked");
             let userInfo = `${nameEl.value} 年齡:${ageEl.value} 性別:${sexEl.value} 縣市:${countyEl.value}`;
             console.log(userInfo);
             document.querySelector("#info").innerHTML = `<h2>${userInfo}</h2>`;
@@ -225,8 +234,22 @@
 
             /* 本地網頁儲存(物件轉換成字串) */
             localStorage.setItem("redode", JSON.stringify(data));
-            localStorage.setItem("bmi", bmi);
 
+            /* 儲存單筆資料 */
+            let person = {
+                name: name,
+                age: age,
+                sex: sex,
+                county: county,
+                height: height,
+                weight: weight,
+                bmi: bmi
+            }
+
+            datas.push(person);
+            console.log(datas);
+            /* 儲存datas */
+            localStorage.setItem("datas", JSON.stringify(datas));
 
         }
 
