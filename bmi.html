@@ -83,6 +83,8 @@
         #recode {
             font-size: 2rem;
             background-color: rgb(38, 192, 120);
+            margin-top: 24px;
+
         }
 
         .comment {
@@ -99,7 +101,9 @@
 <body>
     <div class="main-title">BMI計算機</div>
 
-    <div id="recode"> </div>
+    <div id="recode">
+
+    </div>
     <form action="">
         <label for="username">姓名:</label>
         <input id="username" name="username" type="text" placeholder="請輸入姓名"><br>
@@ -158,6 +162,16 @@
             count: 0
         }
 
+        recode = JSON.parse(localStorage.getItem("record"));
+        if (recoder) {
+            data = record;
+            let avg = (data.total / data.count).toFixed(1);
+            document.querySelector("#recode").innerHTML = `紀錄人數:${data.count} 平均bmi:${avg}`;
+
+        }
+
+        console.log(data);
+
 
         function calc() {
             let height = heightEl.value;
@@ -194,6 +208,12 @@
             console.log(data);
             let avg = (data.total / data.count).toFixed(1);
             document.querySelector("#recode").innerHTML = `紀錄人數:${data.count} 平均bmi:${avg}`;
+
+            /* 本地網頁儲存(物件轉換成字串) */
+            localStorage.setItem("redode", JSON.stringify(data));
+            localStorage.setItem("bmi", bmi);
+
+
         }
 
         function getComment(bmi) {
