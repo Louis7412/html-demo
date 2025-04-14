@@ -58,7 +58,7 @@
             position: absolute;
             background-color: brown;
             color: white;
-            padding: 12px;
+            padding: 6px;
             border-radius: 6px;
             text-decoration: none;
             top: 12px;
@@ -100,7 +100,6 @@
 
 <body>
     <div class="main-title">BMI計算機</div>
-
     <div id="recode">
 
     </div>
@@ -131,6 +130,8 @@
         </div>
         <br>
         <button type="button" onclick="calc()">計算</button>
+        <button type="button" style="background-color:orange;color: black;" id="deleteRecordBtn">刪除紀錄</button>
+
         <a href="index.html">首頁</a>
     </form>
     <div id="info">
@@ -155,6 +156,17 @@
         const nameEl = document.querySelector("#username");
         const ageEl = document.querySelector("#age");
         const countyEl = document.querySelector("#county");
+        const deleteRecordBtnE1 = document.querySelector("#deleteRecordBtn");
+
+        deleteRecordBtnE1.addEventListener("click", function () {
+            localStorage.removeItem("record");
+            /* 刷新頁面 */
+            /* window.location.href = ""; */
+            /* 清除資料 */
+            data.total = 0;
+            data.count = 0;
+            document.querySelector("#recode").innerHTML = "";
+        });
 
         /* 物件 */
         let data = {
@@ -165,8 +177,10 @@
         recode = JSON.parse(localStorage.getItem("record"));
         if (recoder) {
             data = record;
+            /* 加入顯示紀錄動作 */
             let avg = (data.total / data.count).toFixed(1);
             document.querySelector("#recode").innerHTML = `紀錄人數:${data.count} 平均bmi:${avg}`;
+
 
         }
 
